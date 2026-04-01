@@ -27,6 +27,9 @@ Before(async function () {
 
 After(async function (scenario) {
   const fileName = scenario.pickle.name.replace(/ /g, "_");
+  await this.page.close();
+  await this.context.close();
+  await this.browser.close();
 
   //  Screenshot on failure
   if (scenario.result.status === 'FAILED') {

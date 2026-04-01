@@ -1,12 +1,13 @@
 Feature: Login & Logout
 
-  Scenario: Verify by Valid Login
-    Given I open the login page of url "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
-    When I enter Admin as username and admin123 as password
-    Then I should see dashboard of url "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
-
-  Scenario: Verify Logout
-    Given I open the login page of url "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
-    When I enter Admin as username and admin123 as password
+  Scenario: Verify Login & Logout
+    Given I open the login page 
+    When I enter <username> as username and <password> as password
+    Then I should see dashboard
     And I logout from the application
-    Then I should see dashboard of url "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+    Then I should see login page
+
+    Examples:
+      | username | password |
+      | Admin    | admin123 |
+      

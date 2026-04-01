@@ -2,12 +2,10 @@ class LoginPage {
   constructor(page) {
     this.page = page;
 
-    // Login locators
     this.usernameInput = page.locator('input[name="username"]');
     this.passwordInput = page.locator('input[name="password"]');
     this.loginButton = page.locator('button[type="submit"]');
 
-    // ✅ Logout locators
     this.userDropdown = page.locator('.oxd-userdropdown-tab');
     this.logoutButton = page.locator('a[href*="logout"]');
   }
@@ -34,11 +32,8 @@ class LoginPage {
     await this.enterPassword(password);
     await this.clickLogin();
 
-    // wait for dashboard
     await this.page.waitForURL(/dashboard/);
   }
-
-  // 🔥 LOGOUT METHODS
 
   async clickUserDropdown() {
     await this.userDropdown.click();
@@ -50,7 +45,7 @@ class LoginPage {
 
   async logout() {
     await this.clickUserDropdown();
-    await this.page.waitForTimeout(1000); // small wait for dropdown
+    await this.page.waitForTimeout(1000);
     await this.clickLogout();
 
     await this.page.waitForURL(/login/);

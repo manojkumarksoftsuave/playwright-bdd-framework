@@ -13,6 +13,7 @@
     "brace-expansion": "^5.0.4",
     "buffer-from": "^1.1.2",
     "capital-case": "^1.0.4",
+    "chai": "^6.2.2",
     "chalk": "^4.1.2",
     "class-transformer": "^0.5.1",
     "cli-table3": "^0.6.5",
