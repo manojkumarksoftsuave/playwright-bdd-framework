@@ -44,10 +44,11 @@ class LoginPage {
   }
 
   async logout() {
+    await this.page.waitForLoadState('domcontentloaded');
     await this.clickUserDropdown();
-    await this.page.waitForTimeout(1000);
+    await this.page.waitForLoadState('domcontentloaded');
     await this.clickLogout();
-
+    await this.page.waitForLoadState('domcontentloaded');
     await this.page.waitForURL(/login/);
     console.log("Logout successful");
   }

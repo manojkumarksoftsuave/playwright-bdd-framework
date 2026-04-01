@@ -4,78 +4,90 @@
     "elements": [
       {
         "description": "",
-        "id": "login-&-logout;verify-logout",
+        "id": "login-&-logout;verify-login-&-logout",
         "keyword": "Scenario",
         "line": 3,
-        "name": "Verify Logout",
+        "name": "Verify Login & Logout",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 294648500
+              "duration": 280088200
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 4,
-            "name": "I open the login page of url \"https://opensource-demo.orangehrmlive.com/web/index.php/auth/login\"",
+            "name": "I open the login page",
             "match": {
               "location": "step-definitions\\loginsteps.js:6"
             },
             "result": {
               "status": "passed",
-              "duration": 5050282799
+              "duration": 4284398400
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 5,
-            "name": "I enter Admin as username and admin123 as password",
+            "name": "I enter \"Admin\" as username and \"admin123\" as password",
             "match": {
               "location": "step-definitions\\loginsteps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 4527131700
+              "duration": 3430372900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I should see dashboard",
+            "match": {
+              "location": "step-definitions\\loginsteps.js:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1095299
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 6,
+            "line": 7,
             "name": "I logout from the application",
             "match": {
               "location": "step-definitions\\loginsteps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 10266543899
+              "duration": 4665242500
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 7,
-            "name": "I should see dashboard of url \"https://opensource-demo.orangehrmlive.com/web/index.php/auth/login\"",
+            "line": 8,
+            "name": "I should see login page",
             "match": {
-              "location": "step-definitions\\loginsteps.js:15"
+              "location": "step-definitions\\loginsteps.js:24"
             },
             "result": {
               "status": "passed",
-              "duration": 1711499
+              "duration": 440399
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "failed",
-              "duration": 273245399,
-              "error_message": "tracing.stop: Target page, context or browser has been closed\n    at World.<anonymous> (F:\\Playwright-BDD\\PlaywrightBddCucumberLearning\\support\\hooks.js:56:30)"
+              "status": "passed",
+              "duration": 1425233800
             }
           }
         ],
