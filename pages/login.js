@@ -2,54 +2,46 @@ class LoginPage {
   constructor(page) {
     this.page = page;
 
-    this.usernameInput = page.locator('input[name="username"]');
-    this.passwordInput = page.locator('input[name="password"]');
-    this.loginButton = page.locator('button[type="submit"]');
+    this.username = page.locator('input[name="username"]');
+    this.password = page.locator('input[name="password"]');
+    this.loginBtn = page.locator('button[type="submit"]');
 
-    this.userDropdown = page.locator('.oxd-userdropdown-tab');
-    this.logoutButton = page.locator('a[href*="logout"]');
+    this.userMenu = page.locator('.oxd-userdropdown-tab');
+    this.logoutBtn = page.locator('a[href*="logout"]');
   }
 
-  async navigateToLoginPage(url) {
-    await this.page.goto(url);
-    await this.page.waitForLoadState('domcontentloaded');
-  }
+  async open(url) {
+  console.log("Opening login page...");
 
-  async enterUsername(username) {
-    await this.usernameInput.fill(username);
-  }
+  await this.page.goto(url, {
+    waitUntil: "domcontentloaded",
+    timeout: 60000
+  });
 
-  async enterPassword(password) {
-    await this.passwordInput.fill(password);
-  }
-
-  async clickLogin() {
-    await this.loginButton.click();
-  }
+  await this.page.waitForSelector('input[name="username"]', {
+    state: "visible",
+    timeout: 60000
+  });
+}
 
   async login(username, password) {
-    await this.enterUsername(username);
-    await this.enterPassword(password);
-    await this.clickLogin();
+    await this.username.fill(username);
+    await this.password.fill(password);
+    await this.loginBtn.click();
 
     await this.page.waitForURL(/dashboard/);
-  }
 
-  async clickUserDropdown() {
-    await this.userDropdown.click();
-  }
-
-  async clickLogout() {
-    await this.logoutButton.click();
+    await this.userMenu.waitFor({ state: "visible" });
   }
 
   async logout() {
-    await this.page.waitForLoadState('domcontentloaded');
-    await this.clickUserDropdown();
-    await this.page.waitForLoadState('domcontentloaded');
-    await this.clickLogout();
-    await this.page.waitForLoadState('domcontentloaded');
+    await this.userMenu.click();
+
+    await this.logoutBtn.waitFor({ state: "visible" });
+
+    await this.logoutBtn.click();
     await this.page.waitForURL(/login/);
+    await this.username.waitFor({ state: "visible" });
   }
 }
 

@@ -1,9 +1,24 @@
 {
-  "name": "playwrightbddcucumberlearning",
+  "name": "playwright-cucumber-clean",
   "version": "1.0.0",
+  "scripts": {
+    "clean": "rimraf reports screenshots videos allure-results allure-report",
+    "test": "npm run clean && cucumber-js",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.0",
+    "@playwright/test": "^1.42.0",
+    "allure-commandline": "^2.38.1",
+    "allure-cucumberjs": "^3.6.0",
+    "multiple-cucumber-html-reporter": "^3.5.0",
+    "playwright": "^1.42.0",
+    "rimraf": "^5.0.0"
+  },
+  "description": "Playwright BDD Framework Learning",
   "main": "cucumber.js",
   "dependencies": {
-    "@cucumber/cucumber": "^12.7.0",
     "ansi-regex": "^4.1.1",
     "ansi-styles": "^5.2.0",
     "any-promise": "^1.3.0",
@@ -80,8 +95,7 @@
     "path-is-absolute": "^1.0.1",
     "path-scurry": "^2.0.2",
     "picocolors": "^1.1.1",
-    "playwright": "^1.59.0",
-    "playwright-core": "^1.58.2",
+    "playwright-core": "^1.59.0",
     "progress": "^2.0.3",
     "property-expr": "^2.0.6",
     "read-package-up": "^12.0.0",
@@ -129,12 +143,7 @@
     "yaml": "^2.8.2",
     "yup": "^1.7.1"
   },
-  "scripts": {
-    "test": "npx cucumber-js"
-  },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": "Playwright BDD Framework Learning",
-  "devDependencies": {}
+  "license": "ISC"
 }

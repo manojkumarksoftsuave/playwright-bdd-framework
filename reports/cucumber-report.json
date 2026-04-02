@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 614997300
+              "duration": 668690099
             }
           },
           {
@@ -23,11 +23,11 @@
             "line": 4,
             "name": "I open the login page",
             "match": {
-              "location": "step-definitions\\loginsteps.js:6"
+              "location": "step-definitions\\loginsteps.js:5"
             },
             "result": {
               "status": "passed",
-              "duration": 4140471700
+              "duration": 6811492299
             }
           },
           {
@@ -36,11 +36,11 @@
             "line": 5,
             "name": "I enter \"Admin\" as username and \"admin123\" as password",
             "match": {
-              "location": "step-definitions\\loginsteps.js:11"
+              "location": "step-definitions\\loginsteps.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 2713932899
+              "duration": 5174430599
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 6,
             "name": "I should see dashboard",
             "match": {
-              "location": "step-definitions\\loginsteps.js:15"
+              "location": "step-definitions\\loginsteps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 893000
+              "duration": 4293700
             }
           },
           {
@@ -62,11 +62,11 @@
             "line": 7,
             "name": "I logout from the application",
             "match": {
-              "location": "step-definitions\\loginsteps.js:20"
+              "location": "step-definitions\\loginsteps.js:18"
             },
             "result": {
               "status": "passed",
-              "duration": 4437444900
+              "duration": 5733601399
             }
           },
           {
@@ -75,11 +75,11 @@
             "line": 8,
             "name": "I should see login page",
             "match": {
-              "location": "step-definitions\\loginsteps.js:24"
+              "location": "step-definitions\\loginsteps.js:22"
             },
             "result": {
               "status": "passed",
-              "duration": 783499
+              "duration": 3796800
             }
           },
           {
@@ -87,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1466567000
+              "duration": 240667300
             }
           }
         ],

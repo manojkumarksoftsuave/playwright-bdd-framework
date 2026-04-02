@@ -33,6 +33,13 @@ pipeline{
             steps{
                 bat 'cd'
             }
-        }
+        }    
+        stage('generate allure report') {
+            steps {
+                allure includeProperties: false,
+                       jdk: '',
+                       results: [[path: 'allure-results']]
+            }
         }
     }
+}

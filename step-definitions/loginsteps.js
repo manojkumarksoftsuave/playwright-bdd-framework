@@ -1,27 +1,24 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
-const { chromium } = require('playwright');
-const { expect } = require('chai');
-const LoginPage = require('../pages/login');
+const { Given, When, Then } = require("@cucumber/cucumber");
+const { expect } = require("@playwright/test");
+const LoginPage = require("../pages/login.js");
 
-Given('I open the login page', async function () {
+Given("I open the login page", async function () {
   this.loginPage = new LoginPage(this.page);
-  await this.loginPage.navigateToLoginPage("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+  await this.loginPage.open("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 });
 
-When('I enter {string} as username and {string} as password', async function (username, password) {
+When("I enter {string} as username and {string} as password", async function (username, password) {
   await this.loginPage.login(username, password);
 });
 
-Then('I should see dashboard', async function () {
-  const currentUrl = this.page.url();
-  expect(currentUrl).to.equal("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
+Then("I should see dashboard", async function () {
+  await expect(this.page).toHaveURL(/dashboard/);
 });
 
-When('I logout from the application', async function () {
+When("I logout from the application", async function () {
   await this.loginPage.logout();
 });
 
-Then('I should see login page', async function () {
-  const currentUrl = this.page.url();
-  expect(currentUrl).to.equal("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+Then("I should see login page", async function () {
+  await expect(this.page).toHaveURL(/login/);
 });

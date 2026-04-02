@@ -1,13 +1,15 @@
 module.exports = {
   default: {
-    paths: ['features/**/*.feature'],
+    paths: ["features/**/*.feature"],
     require: [
-      'step-definitions/**/*.js',
-      'support/hooks.js'  
+      "step-definitions/**/*.js",
+      "support/hooks.js"
     ],
     format: [
-      'progress',
-      'json:reports/cucumber-report.json'
+      "progress",
+      "summary",
+      "json:reports/cucumber-report.json",
+      "allure-cucumberjs/reporter"
     ],
     timeout: 60000
   }
