@@ -9,3 +9,4 @@ node_modules/
 reports/
 .env
 tests/
+allure-report/
