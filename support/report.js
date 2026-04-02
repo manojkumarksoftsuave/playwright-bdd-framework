@@ -34,9 +34,7 @@ function generateReport() {
   console.log('Cucumber HTML report generated');
 }
 
-// Only generate the HTML report when this file is executed directly.
 if (require.main === module) {
   generateReport();
 }
-// Exporting correctly to prevent editor/TS false syntax errors
 module.exports.generateReport = generateReport;

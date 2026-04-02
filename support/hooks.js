@@ -6,7 +6,7 @@ setDefaultTimeout(60000);
 
 Before(async function () {
   this.browser = await chromium.launch({
-    headless: process.env.CI ? true : false, // visible locally, headless in Jenkins
+    headless: process.env.CI ? true : false,
     slowMo: process.env.CI ? 0 : 200
   });
 
@@ -16,7 +16,6 @@ Before(async function () {
     }
   });
 
-  // Start tracing
   await this.context.tracing.start({
     screenshots: true,
     snapshots: true
@@ -29,7 +28,6 @@ After(async function (scenario) {
   const fileName = scenario.pickle.name.replace(/ /g, "_");
 
   try {
-    // 📸 Screenshot on failure
     if (scenario.result.status === 'FAILED' && this.page) {
       const screenshot = await this.page.screenshot({
         path: `reports/screenshots/${fileName}.png`
@@ -37,20 +35,17 @@ After(async function (scenario) {
       await this.attach(screenshot, 'image/png');
     }
 
-    // 🧪 Stop tracing BEFORE closing context
     if (this.context && this.context.tracing) {
       await this.context.tracing.stop({
         path: `reports/traces/${fileName}.zip`
       });
     }
 
-    // 🎥 Handle video (with delay to avoid EBUSY)
     if (this.page && this.page.video) {
       const video = this.page.video();
       if (video) {
         const videoPath = await video.path();
 
-        // wait for file to release (IMPORTANT FIX)
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         if (scenario.result.status === 'FAILED') {
@@ -70,7 +65,6 @@ After(async function (scenario) {
     console.log("After hook error:", err.message);
   }
 
-  // 🔚 Close everything safely (LAST STEP)
   try {
     if (this.page) {
       await this.page.close();

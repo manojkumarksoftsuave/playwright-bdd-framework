@@ -50,7 +50,6 @@ class LoginPage {
     await this.clickLogout();
     await this.page.waitForLoadState('domcontentloaded');
     await this.page.waitForURL(/login/);
-    console.log("Logout successful");
   }
 }
 

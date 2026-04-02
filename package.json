@@ -135,5 +135,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Playwright BDD Framework Learning",
+  "devDependencies": {}
 }
