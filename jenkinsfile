@@ -1,0 +1,38 @@
+pipeline{
+    agent any
+    parameters{
+        choice(name:'environment', choices:['testing', 'production'], description:'Environment_Name')
+    }
+    stages{
+        stage('git clone'){
+            steps{
+                git branch: 'main', credentialsId: '20d86f03-a29e-49c1-a547-05ef6cfa8e6f', url: 'https://github.com/manojkumarksoftsuave/playwright-bdd-framework.git'
+            }
+        }
+        stage('install dependencies'){
+            steps{
+                bat 'npm install'
+            }
+        }
+        stage('browser install'){
+            steps{
+                bat 'npx playwright install'
+            }
+        }
+        stage('run command'){
+            steps{
+                bat 'npx cucumber-js'
+            }
+        }
+        stage('folder structure'){
+            when{
+                expression{
+                    params.environment=='production'
+                }
+            }
+            steps{
+                bat 'cd'
+            }
+        }
+        }
+    }
